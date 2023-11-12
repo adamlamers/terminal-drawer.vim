@@ -15,7 +15,15 @@ function terminal_drawer#ToggleTerminal() abort
   else
       " no terminal buffer, create one
       let l:cmd = get(g:, 'terminal_drawer_shell', '')
-      execute 'term ' . l:cmd
+      let l:new_buf = -1
+      if len(l:cmd) > 0
+        let l:new_buf = term_start(l:cmd)
+      else
+        let l:new_buf = term_start(environ()["SHELL"])
+      endif
+
+      if l:new_buf > 0 && g:terminal_drawer_start_nobuflisted > 0
+          call setbufvar(l:new_buf, "&buflisted", 0)
+      endif
   endif
 endfunction
-
