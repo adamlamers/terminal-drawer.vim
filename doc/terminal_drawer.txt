@@ -28,6 +28,13 @@ g:terminal_drawer_leader                         *g:terminal_drawer_leader*
     Default value is '<C-t>'.
     Leader key to open/close terminal.
 
+g:terminal_drawer_start_nobuflisted              *g:terminal_drawer_start_nobuflisted*
+    Type |Integer|
+    Default value is 0
+    If >0, created terminal buffers created will have the nobuflisted
+    option set.
+    This will keep the terminal buffer out of your normal buffer navigation.
+
 ==============================================================================
 COMMANDS                                         *terminal-drawer-commands*
 
